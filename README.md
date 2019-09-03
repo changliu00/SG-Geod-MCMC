@@ -3,10 +3,10 @@
 [Chang Liu][changliu] (<chang-li14@mails.tsinghua.edu.cn> (deprecated); <liuchangsmail@gmail.com>),
 [Jun Zhu][junzhu], and [Yang Song][yangsong]. NIPS 2016.
 
-[Paper](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_nips2016.pdf)
-[Appendix](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_supp_nips2016.pdf)
-[Slides](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_beamer_nips2016.pdf)
-[Poster](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_poster_nips2016.pdf)
+\[[Paper](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_nips2016.pdf)\]
+\[[Appendix](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_supp_nips2016.pdf)\]
+\[[Slides](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_beamer_nips2016.pdf)\]
+\[[Poster](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_poster_nips2016.pdf)\]
 
 ## Introduction
 
@@ -14,11 +14,17 @@ The repository implements the proposed methods, Stochastic Gradient Geodesic Mon
 and geodesic Stochastic Gradient Nose-Hoover Thermostats (gSGNHT), and their application on the
 Spherical Admixture Model (SAM) ([Reisinger et al., 2010](https://icml.cc/Conferences/2010/papers/45.pdf)),
 where the accuracy and scalability of SGGMC and gSGNHT can be demonstrated.
-Implementations of baseline methods, including Geodesic Monte Carlo (GMC)
+The repository also provides implementations of baseline methods, including Geodesic Monte Carlo (GMC)
 ([Byrne & Girolami, 2013](https://onlinelibrary.wiley.com/doi/full/10.1111/sjos.12036)),
 variational inference (VI) ([Reisinger et al., 2010](https://icml.cc/Conferences/2010/papers/45.pdf))
-and its stochastic version (StoVI) ([Hoffman et al., 2013](http://jmlr.org/papers/v14/hoffman13a.html)),
-are also provided.
+and its stochastic version (StoVI) based on [Hoffman et al. (2013)](http://jmlr.org/papers/v14/hoffman13a.html).
+
+SGGMC and gSGNHT are the first _scalable_ MCMC methods on manifolds with no global coordinate systems,
+e.g., hyperspheres, where their Euclidean counterparts, [SGHMC](http://proceedings.mlr.press/v32/cheni14.pdf)
+and [SGNHT](http://papers.nips.cc/paper/5592-bayesian-sampling-using-stochastic-gradient-thermostats),
+are not applicable at all. The inference problem of the topic model SAM falls into this case, where
+SGGMC and gSGNHT achieve the state-of-the-art convergence speed and fitting result measured by test perplexity,
+and the advantage grows with increasing data size.
 
 * Codes for MCMC methods (SGGMC, gSGNHT, GMC) are created by Chang Liu
   (except for the [Eigen library](http://eigen.tuxfamily.org/)).
@@ -26,11 +32,13 @@ are also provided.
 * Codes for variational inference methods (VI, StoVI) are modified by Chang Liu based on
   the codes provided by Reisinger et al. (<joeraii@cs.utaxes.edu>).
   They are implemented in MATLAB.
-* "20News-diff" dataset is available at <http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/>.
+* "[20News-diff](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/)" dataset is available
+  at <http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/>.
   It is generated from the Matlab/Octave version of
   the [20Newsgroups dataset](http://www.qwone.com/~jason/20Newsgroups/).
   Check the "README.md" file in the data package for more details.
-* "Wikipedia-150K" dataset is available at <http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/>.
+* "[Wikipedia-150K](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/)" dataset is available
+  at <http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/>.
   It is generated from the processed dataset by
   [Aonan Zhang](http://ml.cs.tsinghua.edu.cn/~aonan/datasets/wikipedia/).
   Check the "README.md" file in the data package for more details.
@@ -53,7 +61,7 @@ Corresponds to the folder "MCMC/". Implemented by Chang Liu in C++.
 	  (or other C++ compilers supporting [OpenMP](http://openmp.org/) and
 	  the "Makefile" files are modified for the available compiler).
 	- Execute the following commands:
-	  ```
+	  ```bash
 		cd MCMC/myinclude/
 		make
 		cd ..
@@ -69,25 +77,28 @@ Corresponds to the folder "MCMC/". Implemented by Chang Liu in C++.
 * Usage:
 	- First download and unzip our provided data, to the current folder.
 	- Set the number of OpenMP threads (we use 24) by the console command:
-	  ```
+	  ```bash
 		export OMP_NUM_THREADS=24
 	  ```
 	- To run inference methods on the 20Newsgroups-different dataset,  
-	  -----------------------------------------------------------------------------------
-		To run method:	| change directory to:	| execute:
-	  ------------------+-----------------------+----------------------------------------
-		GMC-apprMH		| "MCMC/SAM_GMC/"		| `./samgmc tr settings_diff_approxMH.txt`
-		GMC-bGibbs		| "MCMC/SAM_GMC/"		| `./samgmc tr settings_diff_bGibbs.txt`
-		SGGMC-batch		| "MCMC/SAM_SGGMC/"		| `./samsggmc tr settings_diff_batch.txt`
-		SGGMC-full		| "MCMC/SAM_SGGMC/"		| `./samsggmc tr settings_diff_full.txt`
-		gSGNHT-batch	| "MCMC/SAM_GSGNHT/"	| `./samgsgnht tr settings_diff_batch.txt`
-		gSGNHT-full		| "MCMC/SAM_GSGNHT/"	| `./samgsgnht tr settings_diff_full.txt`
-	  ------------------+-----------------------+----------------------------------------
+
+	  | To run method:	| change directory to:	| execute:                                 |
+	  |:----------------|:----------------------|:-----------------------------------------|
+	  | GMC-apprMH		| "MCMC/SAM_GMC/"		| `./samgmc tr settings_diff_approxMH.txt` |
+	  | GMC-bGibbs		| "MCMC/SAM_GMC/"		| `./samgmc tr settings_diff_bGibbs.txt`   |
+	  | SGGMC-batch		| "MCMC/SAM_SGGMC/"		| `./samsggmc tr settings_diff_batch.txt`  |
+	  | SGGMC-full		| "MCMC/SAM_SGGMC/"		| `./samsggmc tr settings_diff_full.txt`   |
+	  | gSGNHT-batch	| "MCMC/SAM_GSGNHT/"	| `./samgsgnht tr settings_diff_batch.txt` |
+	  | gSGNHT-full		| "MCMC/SAM_GSGNHT/"	| `./samgsgnht tr settings_diff_full.txt`  |
+
 	  To run on the 150K subset of Wikipedia, just replace "diff" with "wiki" in the above table.
 	  
 	  Above executions will reproduce our results. To change parameters or settings,
-	  you can either edit the settings file, or provide a new parameter while executing:
-	  e.g. run `./samgmc tr settings_diff_approxMH.txt btEps 1e-5 ts_tmIntv 300`.
+	  you can either edit the settings file, or provide a new parameter at execution,
+	  e.g., by running
+	  ```
+	    ./samgmc tr settings_diff_approxMH.txt btEps 1e-5 ts_tmIntv 300
+	  ```
 	  The character "%" in the settings file will comment the rest of the line after it.
 	  Detailed format instructions of settings file can be found in
 	  "MCMC/myinclude/myutils_3.hpp", lines 33-41.
@@ -138,7 +149,7 @@ Modified by Chang Liu based on the MATLAB codes by Reisinger et al. (<joeraii@cs
 	- "CompWithSmp_diff.m" and "CompWithSmp_wiki.m" are the entrance for running
 	  variational inference on "20News-different" and "150K-Wikipedia" datasets, respectively.
 	- Perplexity evaluation for trained models is done in "MCMC/SAM_GMC/", using the command:
-	  ```
+	  ```bash
 	    ./samgmc ts [model_filename] settings_[diff/wiki]_vi.txt [other_options]
 	  ```
 
