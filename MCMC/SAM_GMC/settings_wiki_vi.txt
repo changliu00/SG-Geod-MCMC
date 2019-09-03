@@ -1,0 +1,19 @@
+% General
+tsData: ../../Wikipedia-150K/TSD1000_RED2926581_TFIDF1_code.txt
+
+% SAMS_Base
+N: 0 % should not change in command
+bnin: 0 % should not change in command
+
+% SAMS_Eval
+perpType: llog % flog
+tsthN: 200
+tsN:	0 % should not change in command
+tsbnin: 0 % should not change in command
+
+% for top words
+topn: 100
+dictName: ../../Wikipedia-150K/TFIDF1_dictnostops.txt
+dN: % set by command
+dbnin: % set by command
+

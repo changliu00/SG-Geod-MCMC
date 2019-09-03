@@ -1,0 +1,35 @@
+pfx = wiki_
+SAM_Base:
+tr_data = ../../Wikipedia-150K/TRD150000_RED2926581_TFIDF1_code.txt
+sig = 6e3
+kp0 = 6e3
+kp1 = 2e4
+aph = 10.
+Nmax = 50000
+K = 50
+thBnin = 40
+thN = 20
+thL = 10
+thEps = 1e-6
+
+SAM_SGGMC:
+S = 150000
+btL = 10
+btGm = 1e-1
+btAl = 5e-1
+
+Topwords:
+tw_dict = ../../Wikipedia-150K/TFIDF1_dictnostops.txt
+tw_topn = 20
+tw_bnin = 20
+tw_N = -1
+
+SAM_Eval:
+ts_data = ../../Wikipedia-150K/TSD1000_RED2926581_TFIDF1_code.txt
+ts_type = lbaylog % llog lbaylog flog fbaylog
+ts_thN = 200
+ts_tmBeg = 500.
+ts_tmIntv = 1000.
+ts_bnin = 20
+ts_N = 8000
+
