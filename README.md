@@ -1,6 +1,6 @@
 # [Stochastic Gradient Geodesic MCMC Methods](http://papers.nips.cc/paper/6281-stochastic-gradient-geodesic-mcmc-methods)
 
-[Chang Liu][changliu] (<chang-li14@mails.tsinghua.edu.cn> (deprecated); <liuchangsmail@gmail.com>),
+[Chang Liu][changliu] \<<chang-li14@mails.tsinghua.edu.cn> (deprecated); <liuchangsmail@gmail.com>\>,
 [Jun Zhu][junzhu], and [Yang Song][yangsong]. NIPS 2016.
 
 \[[Paper](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_nips2016.pdf)\]
@@ -11,7 +11,7 @@
 ## Introduction
 
 The repository implements the proposed methods, Stochastic Gradient Geodesic Monte Carlo (SGGMC)
-and geodesic Stochastic Gradient Nose-Hoover Thermostats (gSGNHT), and their application on the
+and geodesic Stochastic Gradient Nose-Hoover Thermostats (gSGNHT), and their application in
 Spherical Admixture Model (SAM) ([Reisinger et al., 2010](https://icml.cc/Conferences/2010/papers/45.pdf)),
 where the accuracy and scalability of SGGMC and gSGNHT can be demonstrated.
 The repository also provides implementations of baseline methods, including Geodesic Monte Carlo (GMC)
