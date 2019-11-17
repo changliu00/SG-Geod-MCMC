@@ -1,6 +1,6 @@
 # [Stochastic Gradient Geodesic MCMC Methods](http://papers.nips.cc/paper/6281-stochastic-gradient-geodesic-mcmc-methods)
 
-[Chang Liu][changliu] \<~~<chang-li14@mails.tsinghua.edu.cn>~~; <liuchangsmail@gmail.com>\>,
+[Chang Liu][changliu] \<~~chang-li14@mails.tsinghua.edu.cn~~; <liuchangsmail@gmail.com>\>,
 [Jun Zhu][junzhu], and [Yang Song][yangsong]. NIPS 2016.
 
 \[[Paper](http://ml.cs.tsinghua.edu.cn/~changliu/sggmcmc-sam/sggmc_nips2016.pdf)\]
